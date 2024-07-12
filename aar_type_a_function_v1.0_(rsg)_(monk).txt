@@ -1,0 +1,177 @@
+@name AAR Type A Function V1.0 (RSG) (Monk)
+@inputs FrontTruck:entity RearTruck:entity
+@outputs 
+@persist Angle1 Angle2 Wheels  E1:entity E2:entity Speed2 Speed Bearings TMType Truckframe:string FrameType
+@trigger none
+if(first()|dupefinished()){
+
+#[ Note; For what ever reason, in E2 and for the bodygroup numbers, in this case both the bearings and Traction Motor type. It's ahead by 1+ :/ I have no idea why but it's like that. Thanks AZ  
+    for telling me. (Also nothing i can do about the 1+ ahead in E2.)
+]# 
+ 
+    Truckframe = "models/proppertextures/enamel_black" #Does not change the frame. I've made it so it changes the bearings' texture.
+       
+    TMType = 0 #What TM type do you want for this?
+#   0 - GE 752, normal standard one. Will look normal
+#   1 - EMD D17, wheels will kinda clip through for what ever reason.
+#   2 - WE 362B, same with this. The wheels will clip through    
+    
+    FrameType = 0
+#   0 - IFM Dofasco GSC, whatever it is.
+#   1 - GSC varient 2, I guess you could say?
+#   2 - AdridonDack, I have no idea what this is.          
+#   3 - Holos. That's just what it's called.   
+
+    Bearings = 0 #What do you want your bearings to be?
+#    0 - Journal bearings
+#    1 - Journal Timken bearings (Early maybe?)
+#    2 - Journal Timken Lazy bearings (Lazy indeed. Also maybe Early?)
+#    3 - Timken open bearings (Late maybe? Idk)
+#    4 - Early Hyatt bearings 
+#    5 - Hyatt bearings, just normal Hyatt bearings.
+
+#----------------DO NOT GO PAST THIS.-----------------
+    E1=FrontTruck
+    E1:propPhysicalMaterial("gmod_ice")
+    noCollideAll(E1,0)
+    E1:setAlpha(0)
+    E1:propShadow(0)
+    
+    E2=RearTruck
+    E2:propPhysicalMaterial("gmod_ice")
+    noCollideAll(E2,0)
+    E2:setAlpha(0)
+    E2:propShadow(0)
+
+    A = 1   
+    holoCreate(A)
+    holoModel(A,"models/monkatraztrainprops/trucks/aar_type_a.mdl")
+    holoPos(A,E1:toWorld(vec(0,0,0)))
+    holoAng(A,E1:toWorld(ang(0,0,0)))
+    holoScale(A,vec(1,1,1))
+    holoParent(A,E1)
+    holoEntity(A):setSubMaterial(1,"models/proppertextures/invisible")
+    holoEntity(A):setSubMaterial(2,"models/proppertextures/invisible")
+    holoBodygroup(A,5,Bearings)
+    holoBodygroup(A,6,TMType)
+    holoBodygroup(A,2,FrameType)
+    A = 2   
+    holoCreate(A)
+    holoModel(A,"models/monkatraztrainprops/trucks/aar_type_a.mdl")
+    holoPos(A,E2:toWorld(vec(0,0,0)))
+    holoAng(A,E2:toWorld(ang(0,0,0)))
+    holoScale(A,vec(1,1,1))
+    holoParent(A,E2)
+    holoBodygroup(A,5,Bearings)
+    holoEntity(A):setSubMaterial(2,"models/proppertextures/invisible")
+    A=4
+    holoCreate(A,E1:toWorld(vec(0,48,-0.4+Wheels)),Wheels ? vec(1,42/40,42/40) : vec(1,1,1),E1:toWorld(ang(0,0,0)),vec(255),"models/anytrains/props/locoparts/axle_40_rsg.mdl")    
+    holoParent(A,E1)
+    
+    A=5
+    holoCreate(A,E1:toWorld(vec(0,-48,-0.4+Wheels)),Wheels ? vec(1,42/40,42/40) : vec(1,1,1),E1:toWorld(ang(0,0,0)),vec(255),"models/anytrains/props/locoparts/axle_40_rsg.mdl")
+    holoParent(A,E1)
+    
+    A=6
+    holoCreate(A,E2:toWorld(vec(0,48,-0.4+Wheels)),Wheels ? vec(1,42/40,42/40) : vec(1,1,1),E1:toWorld(ang(0,0,0)),vec(255),"models/anytrains/props/locoparts/axle_40_rsg.mdl")    
+    holoParent(A,E2)
+    
+    A=7
+    holoCreate(A,E2:toWorld(vec(0,-48,-0.4+Wheels)),Wheels ? vec(1,42/40,42/40) : vec(1,1,1),E1:toWorld(ang(0,0,0)),vec(255),"models/anytrains/props/locoparts/axle_40_rsg.mdl")
+    holoParent(A,E2)
+    
+    #Front Truck Bearing holos
+    
+    A=8
+    holoCreate(A,E1:toWorld(vec(44,48,-0.4+Wheels)),Wheels ? vec(1,42/40,42/40) : vec(2,2,2),E1:toWorld(ang(0,0,0)),vec(255),"models/wam98_trainparts/wheel_bearings/timken/timken_ap2.mdl")    
+    holoParent(A,E1)
+    holoEntity(A):setSubMaterial(1,Truckframe)
+    holoEntity(A):setSubMaterial(2,Truckframe)
+    holoEntity(A):setSubMaterial(3,Truckframe)
+    holoEntity(A):setSubMaterial(4,Truckframe)
+    
+    A=9
+    holoCreate(A,E1:toWorld(vec(-44,-48,-0.4+Wheels)),Wheels ? vec(1,42/40,42/40) : vec(2,2,2),E1:toWorld(ang(0,-180,0)),vec(255),"models/wam98_trainparts/wheel_bearings/timken/timken_ap2.mdl")
+    holoParent(A,E1)
+    holoEntity(A):setSubMaterial(1,Truckframe)
+    holoEntity(A):setSubMaterial(2,Truckframe)
+    holoEntity(A):setSubMaterial(3,Truckframe)
+    holoEntity(A):setSubMaterial(4,Truckframe)
+    A=10
+    holoCreate(A,E1:toWorld(vec(-44,48,-0.4+Wheels)),Wheels ? vec(1,42/40,42/40) : vec(2,2,2),E1:toWorld(ang(0,180,0)),vec(255),"models/wam98_trainparts/wheel_bearings/timken/timken_ap2.mdl")    
+    holoParent(A,E1)
+    holoEntity(A):setSubMaterial(1,Truckframe)
+    holoEntity(A):setSubMaterial(2,Truckframe)
+    holoEntity(A):setSubMaterial(3,Truckframe)
+    holoEntity(A):setSubMaterial(4,Truckframe)
+    
+    A=11
+    holoCreate(A,E1:toWorld(vec(44,-48,-0.4+Wheels)),Wheels ? vec(1,42/40,42/40) : vec(2,2,2),E1:toWorld(ang(0,0,0)),vec(255),"models/wam98_trainparts/wheel_bearings/timken/timken_ap2.mdl")
+    holoParent(A,E1)
+    holoEntity(A):setSubMaterial(1,Truckframe)
+    holoEntity(A):setSubMaterial(2,Truckframe)
+    holoEntity(A):setSubMaterial(3,Truckframe)
+    holoEntity(A):setSubMaterial(4,Truckframe)
+    
+    #Second truck bearing holos
+    
+    A=12
+    holoCreate(A,E2:toWorld(vec(44,48,-0.4+Wheels)),Wheels ? vec(1,42/40,42/40) : vec(2,2,2),E2:toWorld(ang(0,0,0)),vec(255),"models/wam98_trainparts/wheel_bearings/timken/timken_ap2.mdl")    
+    holoParent(A,E2)
+    holoEntity(A):setSubMaterial(1,Truckframe)
+    holoEntity(A):setSubMaterial(2,Truckframe)
+    holoEntity(A):setSubMaterial(3,Truckframe)
+    holoEntity(A):setSubMaterial(4,Truckframe)
+    
+    A=13
+    holoCreate(A,E2:toWorld(vec(-44,-48,-0.4+Wheels)),Wheels ? vec(1,42/40,42/40) : vec(2,2,2),E2:toWorld(ang(0,-180,0)),vec(255),"models/wam98_trainparts/wheel_bearings/timken/timken_ap2.mdl")
+    holoParent(A,E2)
+    holoEntity(A):setSubMaterial(1,Truckframe)
+    holoEntity(A):setSubMaterial(2,Truckframe)
+    holoEntity(A):setSubMaterial(3,Truckframe)
+    holoEntity(A):setSubMaterial(4,Truckframe)
+    
+    A=14
+    holoCreate(A,E2:toWorld(vec(-44,48,-0.4+Wheels)),Wheels ? vec(1,42/40,42/40) : vec(2,2,2),E2:toWorld(ang(0,180,0)),vec(255),"models/wam98_trainparts/wheel_bearings/timken/timken_ap2.mdl")    
+    holoParent(A,E2)
+    holoEntity(A):setSubMaterial(1,Truckframe)
+    holoEntity(A):setSubMaterial(2,Truckframe)
+    holoEntity(A):setSubMaterial(3,Truckframe)
+    holoEntity(A):setSubMaterial(4,Truckframe)
+    
+    A=15
+    holoCreate(A,E2:toWorld(vec(44,-48,-0.4+Wheels)),Wheels ? vec(1,42/40,42/40) : vec(2,2,2),E2:toWorld(ang(0,0,0)),vec(255),"models/wam98_trainparts/wheel_bearings/timken/timken_ap2.mdl")
+    holoParent(A,E2)
+    holoEntity(A):setSubMaterial(1,Truckframe)
+    holoEntity(A):setSubMaterial(2,Truckframe)
+    holoEntity(A):setSubMaterial(3,Truckframe)
+    holoEntity(A):setSubMaterial(4,Truckframe)
+    }
+
+interval(100)
+
+A=4+5+8+9+10+11
+
+Speed = E1:velL():y()/-4.25
+Angle1+=Speed
+
+holoAng(4,E1:toWorld(ang(0,0,Angle1)))
+holoAng(5,E1:toWorld(ang(0,0,Angle1)))
+holoAng(8,E1:toWorld(ang(0,0,Angle1)))
+holoAng(9,E1:toWorld(ang(0,-180,-Angle1)))
+holoAng(10,E1:toWorld(ang(0,180,-Angle1)))
+holoAng(11,E1:toWorld(ang(0,0,Angle1)))
+
+A=6+7+12+13+14+15
+
+Speed2 = E2:velL():y()/-4.25
+Angle2+=Speed2
+
+holoAng(6,E2:toWorld(ang(0,0,Angle2)))
+holoAng(7,E2:toWorld(ang(0,0,Angle2)))
+holoAng(12,E1:toWorld(ang(0,180,Angle2)))
+holoAng(13,E1:toWorld(ang(0,0,-Angle2)))
+holoAng(14,E1:toWorld(ang(0,0,-Angle2)))
+holoAng(15,E1:toWorld(ang(0,180,Angle2)))
+
+# Finally the end of that madness X_X
