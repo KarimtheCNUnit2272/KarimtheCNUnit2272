@@ -14,6 +14,6 @@ to GMod. If you haven't read the instructions from other packs like Magnum's RLC
 
 Realistic Locomotive Control Part 2. (RLCPT2 for short.) Ok enough talking from me I should be coding by now so yeah.
 
- \/(Don't ask why i putted these here. Just to comment out everything here said in this if people read it from the E2 which i doubt no one will.)
+   \/(Don't ask why i putted these here. Just to comment out everything here said in this if people read it from the E2 which i doubt no one will.)
 
 ]#
