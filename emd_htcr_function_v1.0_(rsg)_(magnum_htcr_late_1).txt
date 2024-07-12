@@ -1,0 +1,244 @@
+@name EMD HTCR Function V1.0 (RSG) (Magnum HTCR Late 1)
+@inputs FrontTruck:entity RearTruck:entity 
+@persist VelL Color:vector Truckframe:string VelL2 Speed2
+if(first()|dupefinished()){
+#######[Credits]##########    
+# Mr.DVD   
+# HongKong
+    
+#[ Note; the color for what ever reason does not work. Don't ask me why but it really doesn't. Also, you may have to mount the truck 1 unit below the truck mounting base if the entire carbody is
+   in the track.
+]# 
+    Color = vec(50)  
+    Truckframe = "models/proppertextures/enamel_black"
+#-------------------------------Front Truck---------------------------------
+    A=1   
+    holoCreate(A)
+    holoModel(A,"models/magtrainslocos/trucks/htcr_1_late_rsg.mdl")
+    holoPos(A,FrontTruck:toWorld(vec(0,0,-1)))
+    holoAng(A,FrontTruck:toWorld(ang(0,0,0)))
+    holoParent(A,FrontTruck)
+    holoColor(A,Color)
+    holoEntity(A):setSubMaterial(0,Truckframe)
+    holoEntity(A):setSubMaterial(3,"models/proppertextures/invisible")
+    holoEntity(A):setSubMaterial(4,"models/proppertextures/invisible")
+    holoEntity(A):setSubMaterial(5,"models/proppertextures/invisible")
+    FrontTruck:setAlpha(0)
+    FrontTruck:propShadow(0)
+#-------------------------------Rear Truck----------------------------------
+    A=2   
+    holoCreate(A)
+    holoModel(A,"models/magtrainslocos/trucks/htcr_1_late_rsg.mdl")
+    holoPos(A,RearTruck:toWorld(vec(0,0,0)))
+    holoAng(A,RearTruck:toWorld(ang(0,0,0)))
+    holoColor(A,Color)
+    holoParent(A,RearTruck)
+    holoEntity(A):setSubMaterial(0,Truckframe)
+    holoEntity(A):setSubMaterial(3,"models/proppertextures/invisible")
+    holoEntity(A):setSubMaterial(4,"models/proppertextures/invisible")
+    holoEntity(A):setSubMaterial(5,"models/proppertextures/invisible")
+    RearTruck:setAlpha(0)
+    RearTruck:propShadow(0)
+#-------------------------Wheels for the Front and Back Trucks below-------------------------------    
+
+
+
+#-----------------------------Front Truck---------------------------------------    
+    A=3
+    holoCreate(A)
+    holoModel(A,"models/anytrains/props/locoparts/axle_40_rsg.mdl")
+    holoPos(A,FrontTruck:toWorld(vec(0,97,-21.5)))
+    holoAng(A,FrontTruck:toWorld(ang(0,90,0)))
+    holoParent(A,FrontTruck)
+    
+    A=4
+    holoCreate(A)
+    holoModel(A,"models/anytrains/props/locoparts/axle_40_rsg.mdl")
+    holoPos(A,FrontTruck:toWorld(vec(0,14,-21.5)))
+    holoAng(A,FrontTruck:toWorld(ang(0,90,0)))
+    holoParent(A,FrontTruck)
+    
+     A=5
+    holoCreate(A)
+    holoModel(A,"models/anytrains/props/locoparts/axle_40_rsg.mdl")
+    holoPos(A,FrontTruck:toWorld(vec(0,-66,-21.5)))
+    holoAng(A,FrontTruck:toWorld(ang(0,90,0)))
+    holoParent(A,FrontTruck)
+#-------------------------------Rear Truck-------------------------------------    
+    A=6
+    holoCreate(A)
+    holoModel(A,"models/anytrains/props/locoparts/axle_40_rsg.mdl")
+    holoPos(A,RearTruck:toWorld(vec(0,97,-21.5)))
+    holoAng(A,RearTruck:toWorld(ang(0,90,0)))
+    holoParent(A,RearTruck)
+    
+    A=7
+    holoCreate(A)
+    holoModel(A,"models/anytrains/props/locoparts/axle_40_rsg.mdl")
+    holoPos(A,RearTruck:toWorld(vec(0,14,-21.5)))
+    holoAng(A,RearTruck:toWorld(ang(0,90,0)))
+    holoParent(A,RearTruck)
+    
+    A=8
+    holoCreate(A)
+    holoModel(A,"models/anytrains/props/locoparts/axle_40_rsg.mdl")
+    holoPos(A,RearTruck:toWorld(vec(0,-66,-21.5)))
+    holoAng(A,RearTruck:toWorld(ang(0,90,0)))
+    holoParent(A,RearTruck)
+#---------------------------------------------Front and Rear Truck Bearings--------------------------------------------------------    
+    A=9
+    holoCreate(A)
+    holoModel(A,"models/wam98_trainparts/wheel_bearings/timken/timken_ap2.mdl")
+    holoPos(A,FrontTruck:toWorld(vec(40.3,98,-21.5)))
+    holoScale(A,vec(2,2,2))
+    holoAng(A,FrontTruck:toWorld(ang(0,0,0)))
+    holoParent(A,FrontTruck)
+    holoColor(A,Color)
+    holoMaterial(A,Truckframe)
+    
+    A=10
+    holoCreate(A)
+    holoModel(A,"models/wam98_trainparts/wheel_bearings/timken/timken_ap2.mdl")
+    holoPos(A,FrontTruck:toWorld(vec(40.3,14,-21.5)))
+    holoScale(A,vec(2,2,2))
+    holoAng(A,FrontTruck:toWorld(ang(0,0,0)))
+    holoParent(A,FrontTruck)
+    holoColor(A,Color)
+    holoMaterial(A,Truckframe)
+    
+    A=11
+    holoCreate(A)
+    holoModel(A,"models/wam98_trainparts/wheel_bearings/timken/timken_ap2.mdl")
+    E = holoEntity(11)
+    holoPos(A,FrontTruck:toWorld(vec(40.3,-66,-21.5)))
+    holoAng(A,FrontTruck:toWorld(ang(0,90,0)))
+    holoScale(A,vec(2,2,2))
+    holoParent(A,FrontTruck)
+    holoColor(A,Color)
+    holoMaterial(A,Truckframe)
+    
+    A=12
+    holoCreate(A)
+    holoModel(A,"models/wam98_trainparts/wheel_bearings/timken/timken_ap2.mdl")
+    holoPos(A,FrontTruck:toWorld(vec(-40.3,98,-21.5)))
+    holoAng(A,FrontTruck:toWorld(ang(0,0,0)))
+    holoScale(A,vec(2,2,2))
+    holoParent(A,FrontTruck)
+    holoColor(A,Color)
+    holoMaterial(A,Truckframe)
+        
+    A=13
+    holoCreate(A)
+    holoModel(A,"models/wam98_trainparts/wheel_bearings/timken/timken_ap2.mdl")
+    holoPos(A,FrontTruck:toWorld(vec(-40.3,14,-21.5)))
+    holoAng(A,FrontTruck:toWorld(ang(0,180,0)))
+    holoScale(A,vec(2,2,2))
+    holoParent(A,FrontTruck)
+    holoColor(A,Color)
+    holoMaterial(A,Truckframe)
+    
+    A=14
+    holoCreate(A)
+    holoModel(A,"models/wam98_trainparts/wheel_bearings/timken/timken_ap2.mdl")
+    holoPos(A,FrontTruck:toWorld(vec(-40.3,-66,-21.5)))
+    holoAng(A,FrontTruck:toWorld(ang(0,180,0)))
+    holoScale(A,vec(2,2,2))
+    holoParent(A,FrontTruck)
+    holoColor(A,Color)
+    holoMaterial(A,Truckframe)
+    
+#--------------------------------------Rear Bearings----------------------------------
+
+    A=15
+    holoCreate(A)
+    holoModel(A,"models/wam98_trainparts/wheel_bearings/timken/timken_ap2.mdl")  
+    holoPos(A,RearTruck:toWorld(vec(-40.3,98,-20.5)))
+    holoAng(A,RearTruck:toWorld(ang(0,180,0)))
+    holoScale(A,vec(2,2,2))
+    holoParent(A,RearTruck)
+    holoColor(A,Color)
+    holoMaterial(A,Truckframe)
+    
+    A=16
+    holoCreate(A)
+    holoModel(A,"models/wam98_trainparts/wheel_bearings/timken/timken_ap2.mdl")  
+    holoPos(A,RearTruck:toWorld(vec(-40.3,14,-20.5)))
+    holoAng(A,RearTruck:toWorld(ang(0,180,0)))
+    holoScale(A,vec(2,2,2))
+    holoParent(A,RearTruck)
+    holoColor(A,Color)
+    holoMaterial(A,Truckframe)   
+    
+    A=17
+    holoCreate(A)
+    holoModel(A,"models/wam98_trainparts/wheel_bearings/timken/timken_ap2.mdl")
+    holoPos(A,RearTruck:toWorld(vec(-40.3,-66,-20.5)))
+    holoAng(A,RearTruck:toWorld(ang(0,180,0)))
+    holoScale(A,vec(2,2,2))
+    holoParent(A,RearTruck)
+    holoColor(A,Color)
+    holoMaterial(A,Truckframe)
+    
+   A=18
+    holoCreate(A)
+    holoModel(A,"models/wam98_trainparts/wheel_bearings/timken/timken_ap2.mdl")
+    holoPos(A,RearTruck:toWorld(vec(40.3,98,-20.5)))
+    holoAng(A,RearTruck:toWorld(ang(0,0,0)))
+    holoScale(A,vec(2,2,2))
+    holoParent(A,RearTruck)
+    holoColor(A,Color)
+    holoMaterial(A,Truckframe)
+    
+    A=19
+    holoCreate(A)
+    holoModel(A,"models/wam98_trainparts/wheel_bearings/timken/timken_ap2.mdl")
+    holoPos(A,RearTruck:toWorld(vec(40.3,14,-20.5)))
+    holoAng(A,RearTruck:toWorld(ang(0,0,0)))
+    holoScale(A,vec(2,2,2))
+    holoParent(A,RearTruck)
+    holoColor(A,Color)
+    holoMaterial(A,Truckframe)
+    
+    A=20
+    holoCreate(A)
+    holoModel(A,"models/wam98_trainparts/wheel_bearings/timken/timken_ap2.mdl")
+    holoPos(A,RearTruck:toWorld(vec(40.3,-66,-20.5)))
+    holoAng(A,RearTruck:toWorld(ang(0,0,0)))
+    holoScale(A,vec(2,2,2))
+    holoParent(A,RearTruck)
+    holoColor(A,Color)
+    holoMaterial(A,Truckframe)
+}
+
+interval(100)
+
+A=3+4+5+9+10+11+12+13+14
+
+Speed = FrontTruck:velL():y()/-4.25
+VelL+=Speed
+
+holoAng(3,FrontTruck:toWorld(ang(0,0,VelL)))
+holoAng(4,FrontTruck:toWorld(ang(0,0,VelL)))
+holoAng(5,FrontTruck:toWorld(ang(0,0,VelL)))
+holoAng(9,FrontTruck:toWorld(ang(0,0,VelL)))
+holoAng(10,FrontTruck:toWorld(ang(0,0,VelL)))
+holoAng(11,FrontTruck:toWorld(ang(0,0,VelL)))
+holoAng(12,FrontTruck:toWorld(ang(180,0,-VelL)))
+holoAng(13,FrontTruck:toWorld(ang(180,0,-VelL)))
+holoAng(14,FrontTruck:toWorld(ang(180,0,-VelL)))
+
+A=6+7+8+9+15+16+17+18+19+20
+
+Speed2 = RearTruck:velL():y()/-4.25
+VelL2+=Speed2
+
+holoAng(6,RearTruck:toWorld(ang(0,0,VelL2)))
+holoAng(7,RearTruck:toWorld(ang(0,0,VelL2)))
+holoAng(8,RearTruck:toWorld(ang(0,0,VelL2)))
+holoAng(15,RearTruck:toWorld(ang(180,0,-VelL2)))
+holoAng(16,RearTruck:toWorld(ang(180,0,-VelL2)))
+holoAng(17,RearTruck:toWorld(ang(180,0,-VelL2)))
+holoAng(18,RearTruck:toWorld(ang(0,0,VelL2)))
+holoAng(19,RearTruck:toWorld(ang(0,0,VelL2)))
+holoAng(20,RearTruck:toWorld(ang(0,0,VelL2)))
+#End of code.
