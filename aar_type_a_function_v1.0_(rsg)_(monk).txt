@@ -5,11 +5,12 @@
 @trigger none
 if(first()|dupefinished()){
 
+
 #[ Note; For what ever reason, in E2 and for the bodygroup numbers, in this case both the bearings and Traction Motor type. It's ahead by 1+ :/ I have no idea why but it's like that. Thanks AZ  
     for telling me. (Also nothing i can do about the 1+ ahead in E2.)
 ]# 
  
-    Truckframe = "models/proppertextures/enamel_black" #Does not change the frame. I've made it so it changes the bearings' texture.
+    Truckframe"models/proppertextures/enamel_black" #Does not change the frame. I've made it so it changes the bearings' texture.
        
     TMType = 0 #What TM type do you want for this?
 #   0 - GE 752, normal standard one. Will look normal
@@ -169,9 +170,9 @@ Angle2+=Speed2
 
 holoAng(6,E2:toWorld(ang(0,0,Angle2)))
 holoAng(7,E2:toWorld(ang(0,0,Angle2)))
-holoAng(12,E1:toWorld(ang(0,180,Angle2)))
-holoAng(13,E1:toWorld(ang(0,0,-Angle2)))
-holoAng(14,E1:toWorld(ang(0,0,-Angle2)))
-holoAng(15,E1:toWorld(ang(0,180,Angle2)))
+holoAng(12,E1:toWorld(ang(0,0,Angle2)))
+holoAng(13,E1:toWorld(ang(0,-180,-Angle2)))
+holoAng(14,E1:toWorld(ang(0,180,-Angle2)))
+holoAng(15,E1:toWorld(ang(0,0,Angle2)))
 
 # Finally the end of that madness X_X
