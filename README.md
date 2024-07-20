@@ -3,7 +3,7 @@ Hello there! Karim here, I been able to make a github finally after deciding i w
 
 to put E2s here I make my self (Or others that have been converted to something else from my E2s i made. 
 
-Only got four of them so bear with me at a chance where i will not be able to stuff much stuff)
+Only got some E2s so bear with me at a chance where i will not be able to stuff much stuff)
 
 and what not i might do. 
 
