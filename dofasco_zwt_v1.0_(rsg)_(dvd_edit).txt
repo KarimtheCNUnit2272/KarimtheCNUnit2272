@@ -11,8 +11,7 @@ if(first()|dupefinished()){
     
     LeafSpringType = 0 #Do you want a different leaf spring or the normal one? 0 = Normal 1 = Different (Not much difference but added it because why not lol)
     
-    Bearings = 4 #[ Note DVD; I covered a bearing so it's 3 bearings instead of 4. Just like the way you wanted :) You can change though which bearing you wanted covered to your perferences,
-                   go to line 47. That's the start of the bodygroups for the bearings and whatnot. Same thing with the back truck line 72 is the start. Have fun!
+    Bearings = 4 #What do you want your bearings to be?
 ]#
                 
 #   0 - Timken open FL Bearings
