@@ -7,7 +7,7 @@ Only got some E2s so bear with me at a chance where i will not be able to stuff 
 
 and what not i might do. 
 
-I also should not have to explain how to install this pack of 4 E2s from my github 
+I also should not have to explain how to install this pack of E2s from my github 
 
 to GMod. If you haven't read the instructions from other packs like Magnum's RLCPT2 Github. He has the same instruntions to install E2s like his Realistic Locomotive Control Part 2.
 
